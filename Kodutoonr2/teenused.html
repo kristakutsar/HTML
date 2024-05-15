@@ -42,14 +42,44 @@
           </div>
         </div>
       </nav>
-      <form action="" method="GET">
-        Toode 1: <input type="number" name="Toode1"> <br>
-        Toode 2: <input type="number" name="Toode2"> <br>
-        Toode 3: <input type="number" name="Toode3"> <br>
-
-        <input type="submit" value="Arvuta">
-    </form>
+      <div class="container mt-5">
+        <br>
+        <h2 class="mb-4">Täidame sinu peolaua!</h2>
 
 
-    
+        <!-- Vormi kuvamine -->
+        <form action="teenused.php" method="GET">
 
+            <div class="form-group">
+                <label class="mb-4" for="select_option">Toitlustuse paketid</label>
+                <br>
+                <select class="form-control" id="select_option" name="select_option">
+                    <option value="Vali siit">Vali siit</option>
+                    <option value="Söök">Söök</option>
+                    <option value="Söök ja jook">Söök + jook</option>
+                    <option value="Erimenüü">Erimenüü (V, GV, LV)</option>
+                    <option value="Erimenüü ja jook">Erimenüü + jook (V, GV, LV)</option>
+                </select>
+            </div>
+            <br>
+
+            <div class="form-group">
+                <label for="input_value1">Inimeste arv</label>
+                <input type="number" class="form-control" id="input_value1" name="input_value1" required min="1">
+            </div>
+            <br>
+
+            <button type="submit" class="btn btn-primary">Arvuta</button>
+        </form>
+        <?php
+        if ($_SERVER["REQUEST_METHOD"] == "GET") {
+            if ($result !== '') {
+                echo "KOKKU: ". $result . "€";
+            } elseif ($error_message !== '') {
+                echo $error_message ;
+            }
+        }
+        ?>
+    </div>
+ 
+</body>

@@ -18,17 +18,17 @@
     <nav class="navbar navbar-expand-lg bg-body-light">
         <div class="container-fluid">
             <img src="ikoon.png" width="40" height="40" alt="">
-            <a class="nav-link fs-6 color: text-body-secondary" href="bootstrap.html">Avaleht</a>
+          <a class="navbar-brand fs-6"  href="#">Avaleht</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active fs-6 color: text-body-secondary" aria-current="page" href="#">Tooted</a>
+                <a class="nav-link active fs-6 color: text-body-secondary" aria-current="page" href="tooted.html">Tooted</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link fs-6 color: text-body-secondary" href="#">Teenused</a>
+                <a class="nav-link fs-6 color: text-body-secondary" href="teenused.html">Teenused</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link fs-6 color: text-body-secondary" href="#">Kontakt</a>
@@ -42,45 +42,31 @@
           </div>
         </div>
       </nav>
-      <div class="container mt-5">
-        <br>
-        <h2 class="mb-4">Täidame sinu peolaua!</h2>
- <?php
-        // Kalkulaatori loogika
-        $error_message = '';
-        $result = '';
+<form action="" method="GET">
+        Toode 1: <input type="number" name="Toode1"> <br>
+        Toode 2: <input type="number" name="Toode2"> <br>
+        Toode 3: <input type="number" name="Toode3"> <br>
 
-        if ($_SERVER["REQUEST_METHOD"] == "GET") {
-            // Kogu sisestatud andmed
-            $input_value1 = $_GET['input_value1'];
-            $select_option = $_GET['select_option'];
-
-            // Piirangud negatiivse väärtuse jaoks
-          
-            $input_value1 = max(0, $input_value1);
-
-            // Kontroll, kas väljad on täidetud
-            if ($input_value1 !== '') {
-                // Kui on valitud "Vali siit", annab veateate
-                if ($select_option === 'Vali siit') {
-                    $error_message = 'Palun vali pakett!';
-                } else {
-                  
-                    // Kui on valitud pakett
-                    if ($select_option == 'Söök') {
-                        $result = 12.5 * $input_value1 ;
-                    } elseif ($select_option == 'Söök ja jook') {
-                      $result = 15 * $input_value1 ;
-                    } elseif ($select_option == 'Erimenüü') {
-                      $result = 20 * $input_value1 ;
-                    } elseif ($select_option == 'Erimenüü ja jook') {
-                      $result = 22.5 * $input_value1 ;
-                    }
-                }
-            } 
-          }
-?>
-
-
+        <input type="submit" value="Arvuta">
+    </form>
+    <script>
+        // Funktsioon Teenused nupu klikkimiseks
+       function TeenusedNupp() {
+           // Muuda allpool olevat URL-i vastavalt soovitud lehele
+           window.location.href = "teenused.php";
+       }
+       
+       // Funktsioon Kontakt nupu klikkimiseks
+       function KontaktNupp() {
+           // Muuda allpool olevat URL-i vastavalt soovitud lehele
+           window.location.href = "kontakt.php";
+       }
+       
+       // Kuula Teenused nupu klikki
+       document.getElementById("TeenusedNupp").addEventListener("click", TeenusedNupp);
+       
+       // Kuula Kontakt nupu klikki
+       document.getElementById("KontaktNupp").addEventListener("click", KontaktNupp);
+       
+       </script>
 </body>
-</html>
